@@ -9,7 +9,6 @@ class Distance:
         return f"Distance: {self.km} kilometers."
 
     def __repr__(self) -> str:
-        print(f"Distance(km={self.km}")
         return f"Distance(km={self.km})"
 
     def __add__(self, other: int | float | Distance) -> "Distance":
@@ -29,8 +28,10 @@ class Distance:
         return self
 
     def __mul__(self, other: int | float) -> "Distance":
-        self.km = self.km * other
-        return self
+        distance2 = Distance(
+            km=self.km * other
+        )
+        return distance2
 
     def __truediv__(self, other: int | float) -> "Distance":
         if isinstance(other, (int, float)):
@@ -38,8 +39,6 @@ class Distance:
                 km=round(self.km / other, 2)
             )
             return distance2
-        else:
-            raise TypeError
 
     def __gt__(self, other: int | float | Distance) -> bool:
         if isinstance(other, (int, float)):
