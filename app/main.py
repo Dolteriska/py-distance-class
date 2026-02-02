@@ -34,11 +34,10 @@ class Distance:
         return distance2
 
     def __truediv__(self, other: int | float) -> "Distance":
-        if isinstance(other, (int, float)):
-            distance2 = Distance(
-                km=round(self.km / other, 2)
-            )
-            return distance2
+        distance2 = Distance(
+            km=round(self.km / other, 2)
+        )
+        return distance2
 
     def __gt__(self, other: int | float | Distance) -> bool:
         if isinstance(other, (int, float)):
